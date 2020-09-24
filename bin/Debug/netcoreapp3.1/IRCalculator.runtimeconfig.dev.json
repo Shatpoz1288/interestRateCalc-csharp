@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\gami9\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\gami9\\.nuget\\packages"
+    ]
+  }
+}
