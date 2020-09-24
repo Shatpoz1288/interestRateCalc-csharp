@@ -16,7 +16,7 @@ namespace IRCalculator
             InterestRateCalculator calc = new InterestRateCalculator(loan, interestRate, years);
 
             calc.Calculate();
-
+            // CODIGO DE PAOLA
         }
     }
 }
