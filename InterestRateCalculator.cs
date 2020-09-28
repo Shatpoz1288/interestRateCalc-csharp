@@ -5,17 +5,22 @@ namespace IRCalculator
 {
     class InterestRateCalculator
     {
-        public int Loan { get; set; }
-        public int Time { get; set; }
+        public float Loan { get; set; }
+        public float Time { get; set; }
         public float InterestRate { get; set; }
 
-        public InterestRateCalculator(int loan, float interestRate)
+        public InterestRateCalculator()
+        {
+
+        }
+
+        public InterestRateCalculator(float loan, float interestRate)
         {
             this.Loan = loan;
-            this.InterestRate = interestRate;
+            this.InterestRate = interestRate / 100;
             this.Time = 1;
         }
-        public InterestRateCalculator(int loan, float interestRate, int time)
+        public InterestRateCalculator(float loan, float interestRate, float time)
             :this(loan, interestRate)
         {
             this.Time = time;
@@ -36,7 +41,7 @@ namespace IRCalculator
                     currentDebt = 0;
 
                 Console.WriteLine("Current Month\t\tCurrent Payment\t\tCurrent Debt");
-                Console.WriteLine(string.Format("\t    {0}\t\t\t      {1}\t\t   {2}",i,currentPayment.ToString("F2"),currentDebt));
+                Console.WriteLine(string.Format("\t    {0}\t\t\t      {1}\t\t   {2}",i.ToString("F0"), currentPayment.ToString("F2"),currentDebt.ToString("F2")));
                 
 
             }
