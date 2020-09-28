@@ -1,22 +1,46 @@
 ﻿using System;
 
+
 namespace IRCalculator
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.Write("Enter loan amount: ");
-            var loan = Int32.Parse(Console.ReadLine());
-            Console.Write("\nEnter time in years: ");
-            var years = Int32.Parse(Console.ReadLine());
-            Console.Write("\nEnter interest rate: ");
-            float interestRate = float.Parse(Console.ReadLine());
+            while (true)
+            {
+                Console.WriteLine("\n\n*****************************************************\nDo you want to exit?\n*****************************************************");
+                string exit = Console.ReadLine().ToLower().Trim();
 
-            InterestRateCalculator calc = new InterestRateCalculator(loan, interestRate, years);
+                if (exit == "yes" || exit == "y")
+                    break;
+                    
+                try
+                {
+                    
+                    float interestRate, loan, years;
 
-            calc.Calculate();
 
+                    Console.Write("Enter loan amount: ");
+                    loan = float.Parse(Console.ReadLine());
+
+                    Console.Write("Enter time in years: ");
+                    years = float.Parse(Console.ReadLine());
+
+                    Console.Write("Enter interest rate: ");
+                    interestRate = float.Parse(Console.ReadLine());
+
+
+                    var calculate = new InterestRateCalculator(loan, interestRate, years);
+                    calculate.Calculate();
+
+
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine("\nError: " + ex + "\n\nMake sure inputs are numeric characters.\n".ToUpper());
+                }
+            }
         }
     }
 }
