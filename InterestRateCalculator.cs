@@ -1,55 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
-
-    namespace IRCalculator
+namespace IRCalculator
+{
+    public partial class Form2 : Form
     {
-        class InterestRateCalculator
+        public Form2()
         {
-            public float Loan { get; set; }
-            public float Time { get; set; }
-            public float InterestRate { get; set; }
+            InitializeComponent();
+        }
 
-            public InterestRateCalculator()
-            {
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            //LoadData();
+        }
 
-            }
-
-            public InterestRateCalculator(float loan, float interestRate)
-            {
-                this.Loan = loan;
-                this.InterestRate = interestRate / 100;
-                this.Time = 1;
-            }
-            public InterestRateCalculator(float loan, float interestRate, float time)
-                : this(loan, interestRate)
-            {
-                this.Time = time;
-            }
-
-            public void Calculate()
-            {
-                var months = Time * 12;
-                var currentDebt = Loan;
-                var monthlyInterestRate = InterestRate / months;
-                var monthlyPayment = Loan / months;
-
-                for (int i = 1; i <= months; i++)
-                {
-                    var currentPayment = monthlyPayment + (monthlyInterestRate * currentDebt);
-                    currentDebt = currentDebt - monthlyPayment;
-                    if (currentDebt < 0)
-                        currentDebt = 0;
-
-                    Console.WriteLine("Current Month\t\tCurrent Payment\t\tCurrent Debt");
-                    Console.WriteLine(string.Format("\t    {0}\t\t\t      {1}\t\t   {2}", i.ToString("F0"), currentPayment.ToString("F2"), currentDebt.ToString("F2")));
-
-
-                }
-            }
-
+        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+                
         }
     }
+}
