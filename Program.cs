@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace IRCalculator
 {
@@ -13,10 +17,10 @@ namespace IRCalculator
 
                 if (exit == "yes" || exit == "y")
                     break;
-                    
+
                 try
                 {
-                    
+
                     float interestRate, loan, years;
 
 
@@ -35,7 +39,7 @@ namespace IRCalculator
 
 
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     Console.WriteLine("\nError: " + ex + "\n\nMake sure inputs are numeric characters.\n".ToUpper());
                 }
