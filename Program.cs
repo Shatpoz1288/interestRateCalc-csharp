@@ -172,16 +172,6 @@ namespace IRCalculator
 
             var resultsWindow = new ResultsForm(loan, (interestRate / 100), years);
             resultsWindow.Show();
-
-            // else if(!a || !b || !c)
-            // {
-            //     MessageBox.Show("One of the fields has a non numeric input");
-            // }
-            // else
-            // {
-            //     var resultsWindow = new ResultsForm(loan, (interestRate / 100), years);
-            //     resultsWindow.Show();
-            // }
         }
     }
 }
