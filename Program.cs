@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace IRCalculator
@@ -17,13 +18,13 @@ namespace IRCalculator
         {
             InitializeComponent();
         }
+
         static void Main(string[] args)
         {
             Application.SetCompatibleTextRenderingDefault(false);
             Application.EnableVisualStyles();
             Application.Run(new Program());
         }
-
 
         private void InitializeComponent()
         {
@@ -142,24 +143,45 @@ namespace IRCalculator
             float loan;
             float years;
             float interestRate;
+
             var a = float.TryParse(textBoxLoan.Text, out loan);
             var b = float.TryParse(textBoxYears.Text, out years);
             var c = float.TryParse(textBoxInterestRate.Text, out interestRate);
 
+            textBoxLoan.BackColor = a ? Color.White : Color.Coral;
+            textBoxYears.BackColor = b ? Color.White : Color.Coral;
+            textBoxInterestRate.BackColor = c ? Color.White : Color.Coral;
 
-            if (String.IsNullOrEmpty(textBoxLoan.Text) || String.IsNullOrEmpty(textBoxYears.Text) || String.IsNullOrEmpty(textBoxInterestRate.Text))
+            if (!a || !b || !c)
             {
-                MessageBox.Show("One of the fields is empty.");
+                MessageBox.Show("One of the fields has a non numeric input."
+                    , "Error"
+                    , MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return;
             }
-            else if(!a || !b || !c)
+
+            if (String.IsNullOrEmpty(textBoxLoan.Text) ||
+                String.IsNullOrEmpty(textBoxYears.Text) ||
+                String.IsNullOrEmpty(textBoxInterestRate.Text))
             {
-                MessageBox.Show("One of the fields has a non numeric input");
+                MessageBox.Show("One of the fields is empty.", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
-            else
-            {
-                var resultsWindow = new ResultsForm(loan, (interestRate / 100), years);
-                resultsWindow.Show();
-            }
+
+            var resultsWindow = new ResultsForm(loan, (interestRate / 100), years);
+            resultsWindow.Show();
+
+            // else if(!a || !b || !c)
+            // {
+            //     MessageBox.Show("One of the fields has a non numeric input");
+            // }
+            // else
+            // {
+            //     var resultsWindow = new ResultsForm(loan, (interestRate / 100), years);
+            //     resultsWindow.Show();
+            // }
         }
     }
 }
