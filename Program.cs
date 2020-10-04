@@ -1,10 +1,5 @@
 ﻿using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
 using System.Windows.Forms;
-//using System.Drawing.Drawing2D;
 
 namespace IRCalculator
 {
@@ -144,14 +139,27 @@ namespace IRCalculator
 
         private void buttonCalculate_Click(object sender, EventArgs e)
         {
-            var loan = float.Parse(textBoxLoan.Text);
-            var years = float.Parse(textBoxYears.Text);
-            var interestRate = float.Parse(textBoxInterestRate.Text) / 100;
+            float loan;
+            float years;
+            float interestRate;
+            var a = float.TryParse(textBoxLoan.Text, out loan);
+            var b = float.TryParse(textBoxYears.Text, out years);
+            var c = float.TryParse(textBoxInterestRate.Text, out interestRate);
 
-            var calculate = new InterestRateCalculator2(loan, interestRate, years);
-            calculate.Calculate();
-            
-            //MessageBox.Show("HELLO WORLD");
+
+            if (String.IsNullOrEmpty(textBoxLoan.Text) || String.IsNullOrEmpty(textBoxYears.Text) || String.IsNullOrEmpty(textBoxInterestRate.Text))
+            {
+                MessageBox.Show("One of the fields is empty.");
+            }
+            else if(!a || !b || !c)
+            {
+                MessageBox.Show("One of the fields has a non numeric input");
+            }
+            else
+            {
+                var resultsWindow = new ResultsForm(loan, (interestRate / 100), years);
+                resultsWindow.Show();
+            }
         }
     }
 }

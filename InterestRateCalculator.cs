@@ -1,30 +1,46 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Collections.Generic;
+
 
 namespace IRCalculator
 {
-    public partial class Form2 : Form
+    public class InterestRateCalculator
     {
-        public Form2()
-        {
-            InitializeComponent();
-        }
-
-        private void Form2_Load(object sender, EventArgs e)
-        {
-            //LoadData();
-        }
-
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
+        public float Loan { get; set; }
+        public float Years{ get; set; }
+        public float InterestRate { get; set; }
                 
+        public InterestRateCalculator(float loan, float interestRate)
+        {
+            this.Loan = loan;
+            this.InterestRate = interestRate;
+            this.Years = 1;
+        }
+        public InterestRateCalculator(float loan, float interestRate, float time)
+            : this(loan, interestRate)
+        {
+            this.Years = time;
+        }
+
+        public List<List<float>> Calculate()
+        {
+            var months = Years * 12;
+            var currentDebt = Loan;
+            var monthlyInterestRate = InterestRate / months;
+            var monthlyPayment = Loan / months;
+            var List2D = new List<List<float>>();
+
+
+            for (int i = 1; i <= months; i++)
+            {
+                var currentPayment = monthlyPayment + (monthlyInterestRate * currentDebt);
+                currentDebt = currentDebt - monthlyPayment;
+                if (currentDebt < 0)
+                    currentDebt = 0;
+
+                List2D.Add(new List<float>() { i, currentPayment, currentDebt });
+                
+            }
+            return List2D;
         }
     }
 }
