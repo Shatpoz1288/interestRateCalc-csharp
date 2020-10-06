@@ -67,9 +67,22 @@ namespace IRCalculator
                 this.listView1.Items.Add(listViewIt);
             }
 
+            void buttonGenerateCSV_Click(object sender, EventArgs e)
+            {
+                this.GenerateWithClick(loan, interestRate, time);
+            }
+
+
             //button
-            buttonGenerateCSV.Text = "Export to CSV";
-            
+            this.buttonGenerateCSV.Text = "Export to CSV";
+            this.buttonGenerateCSV.Location = new Point(366,335);
+            this.buttonGenerateCSV.Name = "buttonGenerateCSV";
+            this.buttonGenerateCSV.Size = new Size(100, 35);
+            this.buttonGenerateCSV.TabIndex = 1;
+            this.buttonGenerateCSV.TabStop = true;
+            this.buttonGenerateCSV.Click += new System.EventHandler(buttonGenerateCSV_Click);
+
+
 
             // Set the location and size of the ListView control.
             this.listView1.Location = new Point(10, 10);
@@ -82,14 +95,17 @@ namespace IRCalculator
             this.listView1.ColumnClick += new ColumnClickEventHandler(ColumnClick);
 
             // Initialize the form.
-            this.ClientSize = new Size(480, 335);
-            this.Controls.AddRange(new Control[] { this.listView1 });
+            this.ClientSize = new Size(480, 380);
+            this.Controls.AddRange(new Control[] { this.listView1 , this.buttonGenerateCSV});
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "ListViewSortForm";
-            this.Text = "Sorted ListView Control";
+            this.Text = "Results";
             // Resume layout of the form.
             this.ResumeLayout(false);
 
+            
         }
+
         private void ColumnClick(object o, ColumnClickEventArgs e)
         {
             // Set the ListViewItemSorter property to a new ListViewItemComparer 
@@ -98,6 +114,12 @@ namespace IRCalculator
             this.listView1.ListViewItemSorter = new ListViewItemComparer(e.Column);
         }
 
+        
+
+        public void GenerateWithClick(float loan, float interestRate, float years)
+        {
+            GenerateCSV.GenerateFile(InterestRateCalculator.Calculate(loan, interestRate, years));
+        }
         class ListViewItemComparer : IComparer
         {
             private int col;

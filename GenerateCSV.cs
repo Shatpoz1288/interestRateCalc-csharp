@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace Console1
+namespace IRCalculator
 {
     class GenerateCSV
     {
@@ -10,13 +10,14 @@ namespace Console1
         {
             try
             {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\gami9\Desktop\results.csv", true))
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\results.csv", true))
                 {
                     file.WriteLine("Current Month,Current Payment,Current Debt");
                     for(int i = 0; i < my2DList.Count; i++)
                     {
                         file.WriteLine(my2DList[i][0].ToString("F0") + "," + my2DList[i][1].ToString("F2") + "," + my2DList[i][2].ToString("F2"));                        
                     }
+                    file.WriteLine();
                     
                 }
             }
