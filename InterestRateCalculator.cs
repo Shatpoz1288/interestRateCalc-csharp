@@ -21,12 +21,12 @@ namespace IRCalculator
             this.Years = time;
         }
 
-        public List<List<float>> Calculate()
+        public static List<List<float>> Calculate(float loan, float interestRate, float years)
         {
-            var months = Years * 12;
-            var currentDebt = Loan;
-            var monthlyInterestRate = InterestRate / months;
-            var monthlyPayment = Loan / months;
+            var months = years * 12;
+            var currentDebt = loan;
+            var monthlyInterestRate = interestRate / months;
+            var monthlyPayment = loan / months;
             var List2D = new List<List<float>>();
 
 

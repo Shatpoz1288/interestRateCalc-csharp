@@ -58,8 +58,8 @@ namespace IRCalculator
 
             // Create ListView items to add to the control.
             // Add Items to the ListView control.
-            var intCalc = new InterestRateCalculator(loan, interestRate, time);
-            var my2DList = intCalc.Calculate();
+            
+            var my2DList = InterestRateCalculator.Calculate(loan, interestRate, time);
 
             for (int i = 0; i < my2DList.Count; i++)
             {
