@@ -69,6 +69,7 @@ namespace IRCalculator
 
             void buttonGenerateCSV_Click(object sender, EventArgs e)
             {
+                MessageBox.Show("File saved!");
                 this.GenerateWithClick(loan, interestRate, time);
             }
 
