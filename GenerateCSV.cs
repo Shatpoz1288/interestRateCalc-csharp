@@ -10,7 +10,7 @@ namespace IRCalculator
         {
             try
             {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\results.csv", true))
+                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"results.csv", true))
                 {
                     file.WriteLine("Current Month,Current Payment,Current Debt");
                     for(int i = 0; i < my2DList.Count; i++)
@@ -23,7 +23,7 @@ namespace IRCalculator
             }
             catch (Exception ex)
             {
-                throw new ApplicationException("Error: ", ex);
+                System.Windows.Forms.MessageBox.Show(ex.ToString());
             }
         }
     }
