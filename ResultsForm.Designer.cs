@@ -35,6 +35,7 @@ namespace IRCalculator
         {
             //Initialize the ListView control and add columns to it.
             this.listView1 = new ListView();
+            this.buttonGenerateCSV = new Button();
             // Set the initial sorting type for the ListView.
             this.listView1.Sorting = SortOrder.None;
             // Disable automatic sorting to enable manual sorting.
@@ -50,6 +51,7 @@ namespace IRCalculator
             listView1.Columns[2].Text = "Current Debt";
             this.listView1.Columns[2].Width = 150;
 
+
             // Suspend control logic until form is done configuring form.
             this.SuspendLayout();
 
@@ -64,6 +66,10 @@ namespace IRCalculator
                 var listViewIt = new ListViewItem(new string[] { my2DList[i][0].ToString("F0"), my2DList[i][1].ToString("F2"), my2DList[i][2].ToString("F2") });
                 this.listView1.Items.Add(listViewIt);
             }
+
+            //button
+            buttonGenerateCSV.Text = "Export to CSV";
+            
 
             // Set the location and size of the ListView control.
             this.listView1.Location = new Point(10, 10);
@@ -112,7 +118,6 @@ namespace IRCalculator
         #endregion
 
         private System.Windows.Forms.ListView listView1;
-
-
+        private System.Windows.Forms.Button buttonGenerateCSV;
     }
 }

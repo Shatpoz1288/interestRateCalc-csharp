@@ -161,9 +161,9 @@ namespace IRCalculator
                 return;
             }
 
-            if (String.IsNullOrEmpty(textBoxLoan.Text) ||
-                String.IsNullOrEmpty(textBoxYears.Text) ||
-                String.IsNullOrEmpty(textBoxInterestRate.Text))
+            if (string.IsNullOrEmpty(textBoxLoan.Text) ||
+                string.IsNullOrEmpty(textBoxYears.Text) ||
+                string.IsNullOrEmpty(textBoxInterestRate.Text))
             {
                 MessageBox.Show("One of the fields is empty.", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
