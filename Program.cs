@@ -4,6 +4,7 @@ using System.Windows.Forms;
 
 namespace IRCalculator
 {
+    
     public partial class Program : Form
     {
         private Label label1;
@@ -13,17 +14,20 @@ namespace IRCalculator
         private TextBox textBoxInterestRate;
         private Button buttonCalculate;
         private Label labelLoan;
-
+        
+        
         public Program()
         {
             InitializeComponent();
         }
 
+        [STAThread]
         static void Main(string[] args)
         {
             Application.SetCompatibleTextRenderingDefault(false);
             Application.EnableVisualStyles();
             Application.Run(new Program());
+            
         }
 
         private void InitializeComponent()

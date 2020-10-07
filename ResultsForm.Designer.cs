@@ -71,6 +71,7 @@ namespace IRCalculator
             {
                 MessageBox.Show("File saved!");
                 this.GenerateWithClick(loan, interestRate, time);
+
             }
 
 
@@ -81,7 +82,7 @@ namespace IRCalculator
             this.buttonGenerateCSV.Size = new Size(100, 35);
             this.buttonGenerateCSV.TabIndex = 1;
             this.buttonGenerateCSV.TabStop = true;
-            this.buttonGenerateCSV.Click += new System.EventHandler(buttonGenerateCSV_Click);
+            //this.buttonGenerateCSV.Click += new System.EventHandler(buttonGenerateCSV_Click);
 
 
 

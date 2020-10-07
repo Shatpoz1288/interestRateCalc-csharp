@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
+
 
 
 namespace IRCalculator
@@ -8,23 +10,29 @@ namespace IRCalculator
     {
         public static void GenerateFile(List<List<float>> my2DList)
         {
-            try
+            var dialog = new SaveFileDialog();
+            dialog.DefaultExt = ".csv";
+            if(dialog.ShowDialog() == DialogResult.OK)
             {
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"results.csv", true))
+                try
                 {
-                    file.WriteLine("Current Month,Current Payment,Current Debt");
-                    for(int i = 0; i < my2DList.Count; i++)
+                    using (System.IO.StreamWriter file = new System.IO.StreamWriter(dialog.FileName, true))
                     {
-                        file.WriteLine(my2DList[i][0].ToString("F0") + "," + my2DList[i][1].ToString("F2") + "," + my2DList[i][2].ToString("F2"));                        
+                        file.WriteLine("Current Month,Current Payment,Current Debt");
+                        for (int i = 0; i < my2DList.Count; i++)
+                        {
+                            file.WriteLine(my2DList[i][0].ToString("F0") + "," + my2DList[i][1].ToString("F2") + "," + my2DList[i][2].ToString("F2"));
+                        }
+                        file.WriteLine();
+
                     }
-                    file.WriteLine();
-                    
+                }
+                catch (Exception ex)
+                {
+                    System.Windows.Forms.MessageBox.Show(ex.ToString());
                 }
             }
-            catch (Exception ex)
-            {
-                System.Windows.Forms.MessageBox.Show(ex.ToString());
-            }
+            
         }
     }
 }
